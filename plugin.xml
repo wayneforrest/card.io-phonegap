@@ -29,6 +29,14 @@
                 <param name="android-package" value="com.velocitywebworks.plugins.cardio.CardIOPlugin"/>
             </feature>
         </config-file>
+
+
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.VIBRATE" />
+            <uses-feature android:name="android.hardware.camera" android:required="false" />
+            <uses-feature android:name="android.hardware.camera.autofocus" android:required="false" />
+            <uses-feature android:name="android.hardware.camera.flash" android:required="false" />
+        </config-file>
         
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
             <activity android:configChanges="orientation|keyboardHidden" android:name="com.velocitywebworks.plugins.cardio.CardIOMain" android:screenOrientation="landscape" android:theme="@android:style/Theme.NoTitleBar.Fullscreen" android:windowSoftInputMode="stateAlwaysHidden">
@@ -39,11 +47,6 @@
             </activity>
             <activity android:name="io.card.payment.CardIOActivity" android:configChanges="keyboardHidden|orientation" />
             <activity android:name="io.card.payment.DataEntryActivity" />
-            
-            <uses-permission android:name="android.permission.VIBRATE" />
-            <uses-feature android:name="android.hardware.camera" android:required="false" />
-            <uses-feature android:name="android.hardware.camera.autofocus" android:required="false" />
-            <uses-feature android:name="android.hardware.camera.flash" android:required="false" />
         </config-file>
         
     </platform>
