@@ -21,6 +21,8 @@
 
 #pragma mark -
 
+
+
 @implementation CardIOPlugin
 
 
@@ -34,7 +36,8 @@
     NSString *appToken = options[@"apiKey"];
     
     self.paymentViewController = [[CardIOPaymentViewController alloc] initWithPaymentDelegate:self];
-    self.paymentViewController.appToken = appToken;
+    [self.paymentViewController setHideCardIOLogo:YES];
+     //self.paymentViewController.appToken = appToken;
     
     NSNumber *collectCVV = [options objectForKey:@"cvv"];
     if(collectCVV) {
@@ -66,12 +69,12 @@
 }
 
 - (void)canScan:(CDVInvokedUrlCommand *)command {
-    BOOL canScan = [CardIOPaymentViewController canReadCardWithCamera];
-    [self sendSuccessTo:command.callbackId withObject:[NSNumber numberWithBool:canScan]];
+    //BOOL canScan = [CardIOPaymentViewController canReadCardWithCamera];
+    [self sendSuccessTo:command.callbackId withObject:[NSNumber numberWithBool:@1]];
 }
 
 - (void)version:(CDVInvokedUrlCommand *)command {
-    NSString *version = [CardIOPaymentViewController libraryVersion];
+    NSString *version = @"1.0";//[CardIOPaymentViewController libraryVersion];
     
     if(version) {
         [self sendSuccessTo:command.callbackId withObject:version];
